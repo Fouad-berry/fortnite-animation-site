@@ -1,0 +1,11 @@
+<div *ngIf="cosmetics">
+    <h2>Liste des Cosmétiques</h2>
+    <ul>
+      <li *ngFor="let cosmetic of cosmetics">
+        <div>{{ cosmetic.name }} - {{ cosmetic.type }} - {{ cosmetic.rarity }}</div>
+        <img src="{{ cosmetic.images.icon }}" alt="Icon" style="height: 40px;">
+        <img src="{{ cosmetic.images.smallIcon }}" alt="Small Icon" style="height: 20px;">
+      </li>
+    </ul>
+  </div>
+  
