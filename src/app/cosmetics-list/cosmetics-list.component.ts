@@ -7,21 +7,28 @@ import { FortniteService } from '../fortnite.service';
   styleUrls: ['./cosmetics-list.component.css']
 })
 export class CosmeticsListComponent implements OnInit {
-  cosmetics!: any[];
+  cosmetics: any[] = [];
+  searchTerm: string = '';
 
   constructor(private fortniteService: FortniteService) { }
 
   ngOnInit(): void {
-    this.fetchCosmetics();
+    this.loadAllCosmetics();
   }
 
-  fetchCosmetics(): void {
-    this.fortniteService.getAllCosmetics()
-      .subscribe(data => {
-        console.log('Data from API:', data); // Vérifiez les données retournées par l'API
-        this.cosmetics = data.data; // Assurez-vous que la structure des données correspond
-      }, error => {
-        console.error('Error fetching cosmetics:', error); // Vérifiez les erreurs de requête
+  loadAllCosmetics(): void {
+    this.fortniteService.getAllCosmetics().subscribe(data => {
+      this.cosmetics = data.data;
+    });
+  }
+
+  onSearch(): void {
+    if (this.searchTerm) {
+      this.fortniteService.searchCosmeticsByName(this.searchTerm).subscribe(data => {
+        this.cosmetics = data.data ? [data.data] : [];
       });
+    } else {
+      this.loadAllCosmetics();
+    }
   }
 }

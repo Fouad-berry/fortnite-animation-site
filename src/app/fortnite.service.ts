@@ -13,4 +13,9 @@ export class FortniteService {
   getAllCosmetics(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  searchCosmeticsByName(name: string): Observable<any> {
+    const url = `https://fortnite-api.com/v2/cosmetics/br/search?name=${name}`;
+    return this.http.get<any>(url);
+  }
 }

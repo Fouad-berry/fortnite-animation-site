@@ -1,13 +1,21 @@
-<div class="row">
-  <div class="col-md-3" *ngFor="let cosmetic of cosmetics">
-    <div class="card mb-3">
-      <img [src]="cosmetic.images.icon" class="card-img-top" alt="Icon" style="height: 200px; object-fit: contain;">
-      <div class="card-body">
-        <h5 class="card-title">{{ cosmetic.name }}</h5>
-        <p class="card-text">
-          Type: {{ cosmetic.type }}<br>
-          Rarity: {{ cosmetic.rarity }}
-        </p>
+<div class="container-fluid first">
+  <div class="row mb-3">
+    <div class="col-12">
+      <input type="text" class="form-control" placeholder="Search cosmetics" [(ngModel)]="searchTerm" (input)="onSearch()" />
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let cosmetic of cosmetics">
+      <div class="card mb-3">
+        <img [src]="cosmetic.images.icon" class="card-img-top" alt="Icon" style="height: 200px; object-fit: contain;">
+        <div class="card-body">
+          <h5 class="card-title">{{ cosmetic.name }}</h5>
+          <p class="card-text">
+            Type: {{ cosmetic.type.value }}<br>
+            Rarity: {{ cosmetic.rarity.value }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
