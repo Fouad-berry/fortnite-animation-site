@@ -1,11 +1,14 @@
-<div *ngIf="cosmetics">
-    <h2>Liste des Cosmétiques</h2>
-    <ul>
-      <li *ngFor="let cosmetic of cosmetics">
-        <div>{{ cosmetic.name }} - {{ cosmetic.type }} - {{ cosmetic.rarity }}</div>
-        <img src="{{ cosmetic.images.icon }}" alt="Icon" style="height: 40px;">
-        <img src="{{ cosmetic.images.smallIcon }}" alt="Small Icon" style="height: 20px;">
-      </li>
-    </ul>
+<div class="row">
+  <div class="col-md-3" *ngFor="let cosmetic of cosmetics">
+    <div class="card mb-3">
+      <img [src]="cosmetic.images.icon" class="card-img-top" alt="Icon" style="height: 200px; object-fit: contain;">
+      <div class="card-body">
+        <h5 class="card-title">{{ cosmetic.name }}</h5>
+        <p class="card-text">
+          Type: {{ cosmetic.type }}<br>
+          Rarity: {{ cosmetic.rarity }}
+        </p>
+      </div>
+    </div>
   </div>
-  
+</div>
